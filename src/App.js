@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 
+import AddBtn from './components/layout/AddBtn';
+import AddLogModal from './components/logs/AddLogModal';
 import Logs from './components/logs/Logs';
 import SearchBar from './components/layout/SearchBar';
 
@@ -15,6 +17,8 @@ const App = () => {
     <Fragment className="App">
       <SearchBar />
       <div className="container">
+        <AddBtn />
+        <AddLogModal />
         <Logs />
       </div>
     </Fragment>
