@@ -20,7 +20,7 @@ const App = () => {
   })
   return (
     <Provider store={store}>
-      <Fragment className="App">
+      <Fragment>
         <SearchBar />
         <div className="container">
           <AddBtn />
