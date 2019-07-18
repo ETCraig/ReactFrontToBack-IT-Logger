@@ -80,4 +80,4 @@ const modalStyle = {
     height: '75%'
 }
 
-export default AddLogModal
+export default AddLogModal;

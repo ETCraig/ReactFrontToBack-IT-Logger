@@ -12,7 +12,7 @@ const LogItem = ({ log }) => {
                 >
                     {log.message}
                 </a>
-                <br/>
+                <br />
                 <span className="grey-text">
                     <span className="black-text">ID #{log.id}</span>
                     Last updated by{' '}
@@ -31,4 +31,4 @@ LogItem.propTypes = {
     log: PropTypes.object.isRequired
 }
 
-export default LogItem
+export default LogItem;

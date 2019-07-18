@@ -37,4 +37,4 @@ const Logs = () => {
     );
 }
 
-export default Logs
+export default Logs;
