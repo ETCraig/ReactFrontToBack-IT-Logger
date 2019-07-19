@@ -9,7 +9,6 @@ import {
     SET_CURRENT,
     CLEAR_CURRENT
 } from './Types'
-import { async } from 'q';
 
 export const getLogs = () => async dispatch => {
     try {
@@ -53,7 +52,7 @@ export const addLog = log => async dispatch => {
             payload: err.response.statusText
         });
     }
-};
+}
 
 export const deleteLog = id => async dispatch => {
     try {
@@ -73,7 +72,7 @@ export const deleteLog = id => async dispatch => {
             payload: err.response.statusText
         });
     }
-};
+}
 
 export const updateLog = log => async dispatch => {
     try {
@@ -99,14 +98,39 @@ export const updateLog = log => async dispatch => {
             payload: err.response.statusText
         });
     }
-};
+}
+
+export const searchLogs = text => async dispatch => {
+    try {
+        setLoading();
+
+        const res = await fetch(`/logs?q=${text}`);
+        const data = await res.json();
+
+        dispatch({
+            type: SEARCH_LOGS,
+            payload: data
+        });
+    } catch (err) {
+        dispatch({
+            type: LOGS_ERROR,
+            payload: err.response.statusText
+        });
+    }
+}
 
 export const setCurrent = log => {
     return {
         type: SET_CURRENT,
         payload: log
-    };
-};
+    }
+}
+
+export const clearCurrent = () => {
+    return {
+        type: CLEAR_CURRENT
+    }
+}
 
 export const setLoading = () => {
     return {
