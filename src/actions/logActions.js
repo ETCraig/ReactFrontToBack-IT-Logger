@@ -1,7 +1,13 @@
 import {
     GET_LOGS,
     SET_LOADING,
-    LOGS_ERROR
+    LOGS_ERROR,
+    ADD_LOG,
+    DELETE_LOG,
+    UPDATE_LOG,
+    SEARCH_LOGS,
+    SET_CURRENT,
+    CLEAR_CURRENT
 } from './Types'
 import { async } from 'q';
 
@@ -23,6 +29,31 @@ export const getLogs = () => async dispatch => {
         });
     }
 }
+
+export const addLog = log => async dispatch => {
+    try {
+      setLoading();
+  
+      const res = await fetch('/logs', {
+        method: 'POST',
+        body: JSON.stringify(log),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await res.json();
+  
+      dispatch({
+        type: ADD_LOG,
+        payload: data
+      });
+    } catch (err) {
+      dispatch({
+        type: LOGS_ERROR,
+        payload: err.response.statusText
+      });
+    }
+  };
 
 export const setLoading = () => {
     return {

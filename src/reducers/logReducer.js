@@ -1,7 +1,13 @@
 import {
     GET_LOGS,
     SET_LOADING,
-    LOGS_ERROR
+    LOGS_ERROR,
+    ADD_LOG,
+    DELETE_LOG,
+    UPDATE_LOG,
+    SEARCH_LOGS,
+    SET_CURRENT,
+    CLEAR_CURRENT
 } from '../actions/Types';
 
 const initialState = {
@@ -19,6 +25,12 @@ export default (state = initialState, action) => {
                 logs: action.payload,
                 loading: false
             }
+        case ADD_LOG:
+            return {
+                ...state,
+                logs: [...state.logs, action.payload],
+                loading: false
+            };
         case SET_LOADING:
             return {
                 ...state,
